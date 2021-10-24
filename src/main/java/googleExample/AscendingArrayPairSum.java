@@ -1,5 +1,10 @@
 package googleExample;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * Given an array of integers, search for a pair that sums to a target.
  * The items in the array are in ascending order.
@@ -11,28 +16,21 @@ public class AscendingArrayPairSum {
 
     /**
      * This method searches for a pair of items in an array that sum to
-     * a target sum
-     * @param data An array of integers in ascending order.
-     * @param targetSum
-     * @return
+     * a target sum.
+     * @param data An array of integers that are in any order.
+     * @param targetSum The sum to find.
+     * @return true if a matching pair was found.
      */
     public static boolean HasPairWithSum(int[] data, int targetSum) {
-        int lowIndex = 0;
-        int highIndex = data.length - 1;
+        Set<Integer> viewedItems = new HashSet<>();
 
-        while (lowIndex < highIndex) {
-            //TODO remove these testcode variables
-            int lowItem =data[lowIndex];
-            int highItem =data[highIndex];
-
-            if (data[lowIndex] + data[highIndex] == targetSum) {
+        for (int i = 0; i < data.length ; i++) {
+            int pairTarget = targetSum - data[i];
+            System.out.println("item: " + data[i]);;
+            if(viewedItems.contains(pairTarget)) {
                 return true;
             }
-            if (data[lowIndex] > 0 && data[highIndex] > targetSum) {
-                highIndex--;
-            } else {
-                lowIndex++;
-            }
+            viewedItems.add(data[i]);
         }
 
         return false;

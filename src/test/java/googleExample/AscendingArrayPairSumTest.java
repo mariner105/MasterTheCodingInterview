@@ -14,6 +14,13 @@ class AscendingArrayPairSumTest {
     }
 
     @Test
+    public void testFindingSelf() {
+        int arrayUnderTest[] = {1,2,4,0};
+        int sum = 8;
+        assertFalse(AscendingArrayPairSum.HasPairWithSum(arrayUnderTest, sum));
+    }
+
+    @Test
     public void testNegativeTrue() {
         int arrayUnderTest[] = {-99, -80, -2, 1,2,4,10};
         int sum = 8;
