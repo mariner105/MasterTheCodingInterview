@@ -10,7 +10,7 @@ import java.util.Set;
  * There might not be a pair that sums to the target (return false).
  * Return true if a pair is found that sums to the target.
  */
-public class AscendingArrayPairSum {
+public class ArrayPairSum {
 
     /**
      * This method searches for a pair of items in an array that sum to
