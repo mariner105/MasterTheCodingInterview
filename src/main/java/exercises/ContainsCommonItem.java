@@ -9,9 +9,11 @@ import java.util.Set;
  * For example:
  * char[] array1 = {'a', 'b', 'c', 'x'};
  * char[] array2 = {'z', 'y', 'i'};
+ * Should return false
  * -------------------------
  * char[] array1 = {'a', 'b', 'c', 'x'};
  * char[] array2 = {'z', 'y', 'x'};
+ * should return true
  */
 public class ContainsCommonItem {
 
