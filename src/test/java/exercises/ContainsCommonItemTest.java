@@ -9,6 +9,7 @@ class ContainsCommonItemTest {
     @Test
     public void testNull() {
         assertFalse(ContainsCommonItem.twoArraysContainCommonItems(null,null));
+        assertFalse(ContainsCommonItem.twoArraysContainCommonItemsV2(null,null));
     }
 
     @Test
@@ -16,6 +17,7 @@ class ContainsCommonItemTest {
         char[] array1 = {'a', 'b', 'c', 'x'};
         char[] array2 = {'z', 'y', 'i'};
         assertFalse(ContainsCommonItem.twoArraysContainCommonItems(array1,array2));
+        assertFalse(ContainsCommonItem.twoArraysContainCommonItemsV2(array1,array2));
     }
 
     @Test
@@ -23,6 +25,7 @@ class ContainsCommonItemTest {
         char[] array1 = {};
         char[] array2 = {'z', 'y', 'i'};
         assertFalse(ContainsCommonItem.twoArraysContainCommonItems(array1,array2));
+        assertFalse(ContainsCommonItem.twoArraysContainCommonItemsV2(array1,array2));
     }
 
     @Test
@@ -30,6 +33,7 @@ class ContainsCommonItemTest {
         char[] array1 = {'a', 'b', 'c', 'x'};
         char[] array2 = {};
         assertFalse(ContainsCommonItem.twoArraysContainCommonItems(array1,array2));
+        assertFalse(ContainsCommonItem.twoArraysContainCommonItemsV2(array1,array2));
     }
 
     @Test
@@ -37,6 +41,7 @@ class ContainsCommonItemTest {
         char[] array1 = {'a', 'b', 'c', 'x'};
         char[] array2 = {'z', 'y', 'x'};
         assertTrue(ContainsCommonItem.twoArraysContainCommonItems(array1,array2));
+        assertTrue(ContainsCommonItem.twoArraysContainCommonItemsV2(array1,array2));
     }
 
 }

@@ -25,9 +25,7 @@ public class ContainsCommonItem {
 
         Set<Character> viewedArray2Chars = addArrayToSet(array2);
 
-        int counter = 0; //TODO - testcode
         for (char value : array1) {
-            System.out.println(++counter); //TODO - testcode
             if (viewedArray2Chars.contains(value)) {
                 return true;
             }
@@ -43,6 +41,27 @@ public class ContainsCommonItem {
         }
 
         return itemSet;
+    }
+
+    public static boolean twoArraysContainCommonItemsV2(char[] array1, char[] array2) {
+        //Guard against null input
+        if(array1 == null || array2 == null){
+            return false;
+        }
+
+        Set<Character> viewedArray2Chars = addArrayToSet(array2);
+
+        int index2 = 0;
+        for (char value : array1) {
+            if (viewedArray2Chars.contains(value)) {
+                return true;
+            }
+            if (index2 < array2.length){
+                viewedArray2Chars.add(array2[index2++]);
+            }
+        }
+
+        return false;
     }
 
 }
