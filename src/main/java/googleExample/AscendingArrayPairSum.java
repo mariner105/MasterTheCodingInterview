@@ -1,8 +1,6 @@
 package googleExample;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -17,6 +15,8 @@ public class AscendingArrayPairSum {
     /**
      * This method searches for a pair of items in an array that sum to
      * a target sum.
+     * This version stores the values that have been seen into a datastructure
+     * that has an efficient lookup by value.
      * @param data An array of integers that are in any order.
      * @param targetSum The sum to find.
      * @return true if a matching pair was found.
@@ -24,13 +24,32 @@ public class AscendingArrayPairSum {
     public static boolean HasPairWithSum(int[] data, int targetSum) {
         Set<Integer> viewedItems = new HashSet<>();
 
-        for (int i = 0; i < data.length ; i++) {
-            int pairTarget = targetSum - data[i];
-            System.out.println("item: " + data[i]);;
+        for (int value : data)  {
+            int pairTarget = targetSum - value;
             if(viewedItems.contains(pairTarget)) {
                 return true;
             }
-            viewedItems.add(data[i]);
+            viewedItems.add(value);
+        }
+
+        return false;
+    }
+
+    /**
+     * This version stores the complements that have been seen into a datastructure
+     * that has an efficient lookup by value.
+     * @param data An array of integers that are in any order.
+     * @param targetSum The sum to find.
+     * @return true if a matching pair was found.
+     */
+    public static boolean HasPairWithSumStoreComps(int[] data, int targetSum) {
+        Set<Integer> compliments = new HashSet<>();
+
+        for (int value : data) {
+            if (compliments.contains(value)) {
+                return true;
+            }
+            compliments.add(targetSum - value);
         }
 
         return false;
