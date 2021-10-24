@@ -17,6 +17,8 @@ import java.util.Set;
  */
 public class ContainsCommonItem {
 
+    //TODO we could refactor this to place the smaller of the two arrays into the Set
+    // so that we save memory in he event that one array is much larger than the other
     public static boolean twoArraysContainCommonItems(char[] array1, char[] array2) {
         //Guard against null input
         if(array1 == null || array2 == null){
