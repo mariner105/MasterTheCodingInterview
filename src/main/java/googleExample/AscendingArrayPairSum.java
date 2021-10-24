@@ -22,6 +22,10 @@ public class AscendingArrayPairSum {
      * @return true if a matching pair was found.
      */
     public static boolean HasPairWithSum(int[] data, int targetSum) {
+        //Check for null array
+        if (data == null) {
+            return false;
+        }
         Set<Integer> viewedItems = new HashSet<>();
 
         for (int value : data)  {
@@ -43,6 +47,10 @@ public class AscendingArrayPairSum {
      * @return true if a matching pair was found.
      */
     public static boolean HasPairWithSumStoreComps(int[] data, int targetSum) {
+        //Check for null array
+        if (data == null) {
+            return false;
+        }
         Set<Integer> compliments = new HashSet<>();
 
         for (int value : data) {

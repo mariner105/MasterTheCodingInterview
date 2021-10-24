@@ -7,6 +7,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class AscendingArrayPairSumTest {
 
     @Test
+    public void testNullArray() {
+        int sum = 8;
+        assertFalse(AscendingArrayPairSum.HasPairWithSum(null, sum));
+        assertFalse(AscendingArrayPairSum.HasPairWithSumStoreComps(null, sum));
+    }
+
+    @Test
     public void testTrue() {
         int[] arrayUnderTest = {1,2,4,4};
         int sum = 8;
