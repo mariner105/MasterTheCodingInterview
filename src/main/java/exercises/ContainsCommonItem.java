@@ -17,17 +17,25 @@ import java.util.Set;
  */
 public class ContainsCommonItem {
 
-    //TODO we could refactor this to place the smaller of the two arrays into the Set
-    // so that we save memory in he event that one array is much larger than the other
     public static boolean twoArraysContainCommonItems(char[] array1, char[] array2) {
         //Guard against null input
         if(array1 == null || array2 == null){
             return false;
         }
 
-        Set<Character> viewedArray2Chars = addArrayToSet(array2);
+        if (array1.length < array2.length) {
+            return storeSmallerArray(array2, array1);
+        } else {
+            return storeSmallerArray(array1, array2);
+        }
+    }
 
-        for (char value : array1) {
+    //Place the smaller of the two arrays into the Set
+    // so that we save memory in the event that one array is much larger than the other
+    private static boolean storeSmallerArray(char[] largerArray, char[] smallerArray) {
+        Set<Character> viewedArray2Chars = addArrayToSet(smallerArray);
+
+        for (char value : largerArray) {
             if (viewedArray2Chars.contains(value)) {
                 return true;
             }
