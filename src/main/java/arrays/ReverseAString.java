@@ -19,6 +19,10 @@ public class ReverseAString {
             return null;
         }
         int length = str.length();
+        //No need to do work if we only have one character
+        if (length < 2) {
+            return str;
+        }
         StringBuilder reversed = new StringBuilder(length);
         for (int i = length - 1; i >= 0; i--) {
             reversed.append(str.charAt(i));
