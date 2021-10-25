@@ -37,7 +37,7 @@ public class MergeSortedArrays {
             for (int i = index1; i < array1.length; i++) {
                 merged[mergedIndex++] = array1[i];
             }
-        } else if (index2 < array2.length) {
+        } else  {
             for (int i = index2; i < array2.length; i++) {
                 merged[mergedIndex++] = array2[i];
             }
