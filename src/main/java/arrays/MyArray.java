@@ -19,7 +19,7 @@ public class MyArray<T> {
     }
 
     public T get(int index) {
-        if (index > data.length - 1) {
+        if (index < 0 || index >= data.length) {
             return null;
         }
         return data[index];
@@ -40,6 +40,23 @@ public class MyArray<T> {
         return this.length;
     }
 
+    public T delete(int index) {
+        if (index < 0 || index >= this.length) {
+            return null;
+        }
+        T item = this.data[index];
+        shiftItems(index);
+        return item;
+    }
+
+    private void shiftItems(int index) {
+        for (int i = index; i < length - 1; i++) {
+            this.data[i] = this.data[i + 1];
+        }
+        //this.data[this.length - 1] = null;
+        this.length--;
+    }
+
     /**
      * This will double the size of the array by forming a new array and
      * then copying the original array data into the new array.
@@ -58,8 +75,24 @@ public class MyArray<T> {
         return "MyArray{" +
                 "length=" + length +
                 ", size=" + size +
-                ", data=" + Arrays.toString(data) +
+                ", data=" + getString() +
                 ", clazz=" + clazz +
                 '}';
+    }
+
+    private String getString() {
+        StringBuilder strBldr = new StringBuilder(this.size);
+        strBldr.append("data=[");
+        for (int i = 0; i < this.length; i++) {
+            strBldr
+                .append(data[i])
+                .append(", ");
+        }
+
+        return strBldr.toString();
+    }
+
+    public int getLength() {
+        return length;
     }
 }

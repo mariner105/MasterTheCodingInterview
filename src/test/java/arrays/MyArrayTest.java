@@ -3,6 +3,8 @@ package arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class MyArrayTest {
     public static final int CAPACITY = 64;
     public MyArray<Integer> myArray;
@@ -25,7 +27,22 @@ class MyArrayTest {
         System.out.println(myArray.push(24));
         System.out.println(myArray.push(24));
         System.out.println(myArray.push(24));
-        System.out.println(myArray.push(24));
+        System.out.println(myArray.push(999));
+
+        System.out.println("=====Delete an item=====");
         System.out.println(myArray.toString());
+        System.out.println(myArray.delete(5));
+        System.out.println(myArray.toString());
+    }
+
+    @Test
+    public void sizeAfterDelete() {
+        myArray.push(1);
+        assertEquals(1, myArray.getLength());
+        myArray.push(8);
+        assertEquals(2, myArray.getLength());
+        myArray.delete(0);
+        assertEquals(1, myArray.getLength());
+
     }
 }
