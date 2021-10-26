@@ -51,6 +51,7 @@ class SubstringsTest {
         assertTrue(substrings.contains("34"));
         assertTrue(substrings.contains("5678"));
         assertTrue(substrings.contains("5678910"));
+        assertFalse(substrings.contains("0"));
 
     }
 
