@@ -19,6 +19,12 @@ class FirstRecurringItemTest {
     }
 
     @Test
+    public void findFive() {
+        int[] array = {2,5,5,1,2,3,5,1,2,4};
+        assertEquals(5,FirstRecurringItem.firstRecurring(array));
+    }
+
+    @Test
     public void notFound() {
         int[] array = {2,3,4,5};
         assertNull(FirstRecurringItem.firstRecurring(array));

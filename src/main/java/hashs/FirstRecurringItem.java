@@ -29,7 +29,7 @@ public class FirstRecurringItem {
         }
 
         Set<Integer> seenItems = new HashSet<>();
-        for (int item :array) {
+        for (int item : array) {
             if (seenItems.contains(item)) {
                 return item;
             } else {
