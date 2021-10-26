@@ -5,46 +5,60 @@ import java.util.List;
 
 public class HashTable {
 
-    private final List<List<Data>> items;
+    private final List<List<HashItem>> items;
     private final int size;
 
-    public HashTable(int size) {
-        this.items = new ArrayList<>(size);
-        this.size = size;
+    /**
+     * This will create a HashTable with a given tableSize.
+     * Note that there will be fewer collisions with a bigger
+     * tableSize than with a smaller tableSize.
+     * @param tableSize
+     */
+    public HashTable(int tableSize) {
+        this.items = new ArrayList<>(tableSize);
+        this.size = tableSize;
         initializeTable();
-    }
-
-    private int hash(String key) {
-        int hash = 0;
-        for (int i = 0; i < key.length(); i++) {
-            hash = (hash + key.charAt(i) * i) % this.size;
-            System.out.println(hash);
-        }
-        return hash;
     }
 
     public void set(String key, int value) {
         int address = hash(key);
+        //Initialize the bucket the first time that we need to store
+        // something in it.
         if (this.items.get(address) == null) {
             this.items.set(address, new ArrayList<>());
         }
-        List<Data> listAtAddress = items.get(address);
-        Data data = new Data(key, value);
-        listAtAddress.add(data);
+        List<HashItem> listAtAddress = items.get(address);
+        HashItem hashItem = new HashItem(key, value);
+        listAtAddress.add(hashItem);
         this.items.set(address, listAtAddress);
 
     }
 
-    public Data get(String key) {
+    public HashItem get(String key) {
         int address = hash(key);
-        List<Data> subList = items.get(address);
-        int subListIndex = getIndex(subList, key);
-        Data item = subList.get(subListIndex);
+        List<HashItem> currentBucket = items.get(address);
+        int itemIndex = getIndex(currentBucket, key);
+        return currentBucket.get(itemIndex);
+}
 
-        return item;
+    /**
+     * Returns a list of keys from the HashTable.
+     * @return list of keys.
+     */
+    public List<String> keys() {
+        List<String> keys = new ArrayList<>(size * 5);
+        for (List<HashItem> bucket : items) {
+            //A bucket will be null if nothing was added to it.
+            if (bucket != null) {
+                for (HashItem item : bucket) {
+                    keys.add(item.getKey());
+                }
+            }
+        }
+        return keys;
     }
 
-    private int getIndex(List<Data> subList, String key) {
+    private int getIndex(List<HashItem> subList, String key) {
         if (subList == null) {
             return -1;
         }
@@ -54,6 +68,14 @@ public class HashTable {
             }
         }
         return -1;
+    }
+
+    private int hash(String key) {
+        int hash = 0;
+        for (int i = 0; i < key.length(); i++) {
+            hash = (hash + key.charAt(i) * i) % this.size;
+        }
+        return hash;
     }
 
     /**

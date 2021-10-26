@@ -2,12 +2,12 @@ package hashs;
 
 import java.util.Objects;
 
-public class Data {
+public class HashItem {
 
     private final String key;
     private final int value;
 
-    public Data(String key, int  value) {
+    public HashItem(String key, int  value) {
         this.key = key;
         this.value = value;
     }
@@ -24,8 +24,8 @@ public class Data {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Data data = (Data) o;
-        return value == data.value && Objects.equals(key, data.key);
+        HashItem hashItem = (HashItem) o;
+        return value == hashItem.value && Objects.equals(key, hashItem.key);
     }
 
     @Override
