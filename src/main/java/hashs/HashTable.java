@@ -5,8 +5,8 @@ import java.util.List;
 
 public class HashTable {
 
-    private List<List<Data>> items;
-    private int size;
+    private final List<List<Data>> items;
+    private final int size;
 
     public HashTable(int size) {
         this.items = new ArrayList<>(size);
@@ -14,18 +14,17 @@ public class HashTable {
         initializeTable();
     }
 
-    private int hash(int key) {
-        String keyStr = String.valueOf(key);
+    private int hash(String key) {
         int hash = 0;
-        for (int i = 0; i < keyStr.length(); i++) {
-            hash = (hash + keyStr.charAt(i) * i) % this.size;
+        for (int i = 0; i < key.length(); i++) {
+            hash = (hash + key.charAt(i) * i) % this.size;
             System.out.println(hash);
         }
         return hash;
     }
 
     public void set(String key, int value) {
-        int address = hash(value);
+        int address = hash(key);
         if (this.items.get(address) == null) {
             this.items.set(address, new ArrayList<>());
         }
@@ -36,10 +35,25 @@ public class HashTable {
 
     }
 
-    public String get(String value) {
-        //TODO need logic here
+    public Data get(String key) {
+        int address = hash(key);
+        List<Data> subList = items.get(address);
+        int subListIndex = getIndex(subList, key);
+        Data item = subList.get(subListIndex);
 
-        return null;
+        return item;
+    }
+
+    private int getIndex(List<Data> subList, String key) {
+        if (subList == null) {
+            return -1;
+        }
+        for (int i = 0; i < subList.size(); i++) {
+            if (subList.get(i).getKey().equals(key)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**

@@ -1,5 +1,7 @@
 package hashs;
 
+import java.util.Objects;
+
 public class Data {
 
     private final String key;
@@ -16,5 +18,26 @@ public class Data {
 
     public int getValue() {
         return value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Data data = (Data) o;
+        return value == data.value && Objects.equals(key, data.key);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(key, value);
+    }
+
+    @Override
+    public String toString() {
+        return "Data{" +
+                "key='" + key + '\'' +
+                ", value=" + value +
+                '}';
     }
 }
