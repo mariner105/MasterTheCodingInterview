@@ -10,8 +10,9 @@ class HashTableTest {
 
     @Test
     public void demo() {
-        myTable.set("grapes", "10000");
-        myTable.set("grapes", "10000");
+        myTable.set("grapes", 10000);
+        myTable.set("apples", 54);
+        myTable.set("grapes", 10000);
         System.out.println();
     }
 

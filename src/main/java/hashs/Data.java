@@ -3,9 +3,9 @@ package hashs;
 public class Data {
 
     private final String key;
-    private final String value;
+    private final int value;
 
-    public Data(String key, String value) {
+    public Data(String key, int  value) {
         this.key = key;
         this.value = value;
     }
@@ -14,7 +14,7 @@ public class Data {
         return key;
     }
 
-    public String getValue() {
+    public int getValue() {
         return value;
     }
 }

@@ -14,16 +14,17 @@ public class HashTable {
         initializeTable();
     }
 
-    private int hash(String key) {
+    private int hash(int key) {
+        String keyStr = String.valueOf(key);
         int hash = 0;
-        for (int i = 0; i < key.length(); i++) {
-            hash = (hash + key.charAt(i) * i) % this.size;
+        for (int i = 0; i < keyStr.length(); i++) {
+            hash = (hash + keyStr.charAt(i) * i) % this.size;
             System.out.println(hash);
         }
         return hash;
     }
 
-    public void set(String key, String value) {
+    public void set(String key, int value) {
         int address = hash(value);
         if (this.items.get(address) == null) {
             this.items.set(address, new ArrayList<>());
@@ -42,7 +43,8 @@ public class HashTable {
     }
 
     /**
-     * This fills items with nulls where each sublist would later be added.
+     * This fills items with nulls where each sublist
+     * would later be added.
      */
     private void initializeTable() {
         for (int i = 0; i < size; i++) {
