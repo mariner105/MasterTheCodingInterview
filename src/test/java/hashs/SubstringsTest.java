@@ -49,6 +49,8 @@ class SubstringsTest {
         int[] array = {1,2,3,4,5,6,7,8,9,10};
         substrings = Substrings.mapSubstrings(array);
         assertTrue(substrings.contains("34"));
+        assertTrue(substrings.contains("5678"));
+        assertTrue(substrings.contains("5678910"));
 
     }
 

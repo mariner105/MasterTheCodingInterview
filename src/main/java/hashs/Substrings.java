@@ -13,13 +13,13 @@ public class Substrings {
             return null;
         }
 
-        //TODO - this builds substrings from the beginning but not inside substrings
-        // so we might need an inner loop to add those
-        Set<String> substrings = new HashSet<>(20);
-        StringBuilder stringBuilder = new StringBuilder(array.length * 2);
+        Set<String> substrings = new HashSet<>(array.length * 10);
         for (int i = 0; i < array.length; i++) {
-            stringBuilder.append(array[i]);
-            substrings.add(stringBuilder.toString());
+            StringBuilder stringBuilder = new StringBuilder(array.length * 2);
+            for (int j = i; j < array.length; j++) {
+                stringBuilder.append(array[j]);
+                substrings.add(stringBuilder.toString());
+            }
         }
 
         return substrings;
