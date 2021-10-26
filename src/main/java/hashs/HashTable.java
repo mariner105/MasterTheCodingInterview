@@ -25,7 +25,7 @@ public class HashTable {
         //Initialize the bucket the first time that we need to store
         // something in it.
         if (this.items.get(address) == null) {
-            this.items.set(address, new ArrayList<>());
+            this.items.set(address, new ArrayList<>(5));
         }
         List<HashItem> listAtAddress = items.get(address);
         HashItem hashItem = new HashItem(key, value);
