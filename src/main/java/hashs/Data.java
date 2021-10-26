@@ -2,15 +2,15 @@ package hashs;
 
 public class Data {
 
-    private long key;
-    private String value;
+    private final String key;
+    private final String value;
 
-    public Data(long key, String value) {
+    public Data(String key, String value) {
         this.key = key;
         this.value = value;
     }
 
-    public long getKey() {
+    public String getKey() {
         return key;
     }
 

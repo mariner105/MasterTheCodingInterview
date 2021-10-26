@@ -6,11 +6,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class HashTableTest {
 
-    public HashTable<Data> myTable = new HashTable<>(50);
+    public HashTable myTable = new HashTable(50);
 
     @Test
     public void demo() {
-        myTable.set("grapes");
+        myTable.set("grapes", "10000");
+        myTable.set("grapes", "10000");
+        System.out.println();
     }
 
 
