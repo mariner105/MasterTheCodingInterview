@@ -76,11 +76,13 @@ public class MyLinkedList {
             return;
         }
 
-        //Iterate until we find the element to the left of the index (index - 1)
+        //Iterate until we find the element to the left
+        // of the index (index - 1)
         Node priorNode = search(index - 1);
 
-        //Create new Node and take the next pointer from head
-        Node newNode = new Node(value, head.getNextNode());
+        //Create new Node and take the next pointer
+        // from priorNode
+        Node newNode = new Node(value, priorNode.getNextNode());
         //Repoint priorNode to newNode
         priorNode.setNextNode(newNode);
 
