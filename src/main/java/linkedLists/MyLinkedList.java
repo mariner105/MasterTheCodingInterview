@@ -52,16 +52,14 @@ public class MyLinkedList {
     public void prepend(int value) {
         length++;
 
-        //Prepend to empty list
+        //Prepend to empty list (repoints tail)
         if (head == null) {
             head = new Node(value, null);
             tail = head;
             return;
         }
 
-        //Store a reference to the current head
-        Node temp = head;
-        head = new Node(value, temp);
+        head = new Node(value, head);
     }
 
     public void insertAt(int index, int value) {
