@@ -78,7 +78,7 @@ public class MyLinkedList {
 
         //Iterate until we find the element to the left
         // of the index (index - 1)
-        Node priorNode = search(index - 1);
+        Node priorNode = get(index - 1);
 
         //Create new Node and take the next pointer
         // from priorNode
@@ -90,7 +90,7 @@ public class MyLinkedList {
 
     }
 
-    private Node search(int index) {
+    public Node get(int index) {
         Node currentNode = head;
         for (int i = 0; i < index && currentNode.getNextNode() != null; i++) {
             currentNode = currentNode.getNextNode();
@@ -100,16 +100,6 @@ public class MyLinkedList {
     }
 
     public Node remove(int index) {
-        //TODO add logic
-        throw new RuntimeException("Need logic");
-    }
-
-    public Node get(int index) {
-        //TODO add logic
-        throw new RuntimeException("Need logic");
-    }
-
-    public int indexOf(Node searchNode) {
         //TODO add logic
         throw new RuntimeException("Need logic");
     }

@@ -82,6 +82,9 @@ class MyLinkedListTest {
         myLinkedList.insert(1, 99);
         System.out.println(myLinkedList.toString());
         assertEquals(5, myLinkedList.getLength());
+        assertEquals(15, myLinkedList.get(0).getData());
+        assertEquals(99, myLinkedList.get(1).getData());
+        assertEquals(5, myLinkedList.get(2).getData());
 
         myLinkedList.insert(150, 200);
         System.out.println(myLinkedList.toString());
