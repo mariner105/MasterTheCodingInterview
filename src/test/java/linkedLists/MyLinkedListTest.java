@@ -3,8 +3,6 @@ package linkedLists;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.LinkedList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class MyLinkedListTest {
@@ -98,8 +96,51 @@ class MyLinkedListTest {
         myLinkedList.insert(0, 222);
         System.out.println(myLinkedList.toString());
         assertEquals(8, myLinkedList.getLength());
+    }
 
+    @Test
+    public void removeHead() {
+        myLinkedList
+                .append(15)
+                .append(5)
+                .append(10)
+                .append(22);
+        System.out.println(myLinkedList.toString());
+        myLinkedList.remove(0);
+        assertEquals(3, myLinkedList.getLength());
+        assertEquals(5, myLinkedList.get(0).getData());
+        System.out.println(myLinkedList.toString());
+    }
 
+    @Test
+    public void removeTail() {
+        myLinkedList
+                .append(15)
+                .append(5)
+                .append(10)
+                .append(22);
+        System.out.println(myLinkedList.toString());
+        Node temp =  myLinkedList.remove(myLinkedList.getLength() - 1);
+        assertEquals(22, temp.getData());
+        assertEquals(3, myLinkedList.getLength());
+        assertEquals(10, myLinkedList.get(2).getData());
+        System.out.println(myLinkedList.toString());
+    }
+
+    @Test
+    public void removeInner() {
+        myLinkedList
+                .append(15)
+                .append(5)
+                .append(10)
+                .append(22)
+                .append(55)
+                .append(88);
+        System.out.println(myLinkedList.toString());
+        myLinkedList.remove(3);
+        assertEquals(5, myLinkedList.getLength());
+        assertEquals(55, myLinkedList.get(3).getData());
+        System.out.println(myLinkedList.toString());
     }
 
 }

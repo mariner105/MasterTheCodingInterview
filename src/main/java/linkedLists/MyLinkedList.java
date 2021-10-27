@@ -100,8 +100,33 @@ public class MyLinkedList {
     }
 
     public Node remove(int index) {
-        //TODO add logic
-        throw new RuntimeException("Need logic");
+        length--;
+
+        //index 0 is head node
+        if (index == 0) {
+            Node temp = head;
+            head = head.getNextNode();
+            return temp;
+        }
+
+        //index >= length is tail so repoint tail after
+        // finding the previous node
+        if (index >= length) {
+            //Hold current tail
+            Node temp = tail;
+            //Find next to last node
+            tail = get(length - 1);
+            //Set new tail's next node to null
+            tail.setNextNode(null);
+            //Return the old tail
+            return temp;
+        }
+
+        Node priorNode = get(index - 1);
+        Node nodeToRemove = priorNode.getNextNode();
+        priorNode.setNextNode(nodeToRemove.getNextNode());
+
+        return nodeToRemove;
     }
 
     public boolean isEmpty() {
