@@ -70,4 +70,33 @@ class MyLinkedListTest {
         System.out.println(myLinkedList.toString());
     }
 
+    @Test
+    public void insert() {
+        myLinkedList
+                .append(15)
+                .append(5)
+                .append(10)
+                .append(22);
+        System.out.println(myLinkedList.toString());
+
+        myLinkedList.insert(1, 99);
+        System.out.println(myLinkedList.toString());
+        assertEquals(5, myLinkedList.getLength());
+
+        myLinkedList.insert(150, 200);
+        System.out.println(myLinkedList.toString());
+        assertEquals(6, myLinkedList.getLength());
+
+        myLinkedList.insert(myLinkedList.getLength(), 300);
+        System.out.println(myLinkedList.toString());
+        assertEquals(7, myLinkedList.getLength());
+
+
+        myLinkedList.insert(0, 222);
+        System.out.println(myLinkedList.toString());
+        assertEquals(8, myLinkedList.getLength());
+
+
+    }
+
 }

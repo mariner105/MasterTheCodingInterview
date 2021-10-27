@@ -62,9 +62,39 @@ public class MyLinkedList {
         head = new Node(value, head);
     }
 
-    public void insertAt(int index, int value) {
-        //TODO add logic
-        throw new RuntimeException("Need logic");
+    public void insert(int index, int value) {
+        //Prepending so use prepend method
+        if(index == 0) {
+            prepend(value);
+            return;
+        }
+
+        //Insert at or beyond the end of the list so
+        //call append method.
+        if (index >= length) {
+            append(value);
+            return;
+        }
+
+        //Iterate until we find the element to the left of the index (index - 1)
+        Node priorNode = search(index - 1);
+
+        //Create new Node and take the next pointer from head
+        Node newNode = new Node(value, head.getNextNode());
+        //Repoint priorNode to newNode
+        priorNode.setNextNode(newNode);
+
+        length++;
+
+    }
+
+    private Node search(int index) {
+        Node currentNode = head;
+        for (int i = 0; i < index && currentNode.getNextNode() != null; i++) {
+            currentNode = currentNode.getNextNode();
+        }
+
+        return currentNode;
     }
 
     public Node remove(int index) {
