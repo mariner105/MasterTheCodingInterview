@@ -138,17 +138,27 @@ public class MyLinkedList {
         }
 
         Node first = head;
+        System.out.println("First:" + first.getData());
         tail = head;
+        System.out.println("Tail:" + tail.getData());
         Node second = first.getNextNode();
+        System.out.println("Second:" + second.getData());
+        System.out.println("-----");
         while (second != null) {
             Node temp = second.getNextNode();
+            System.out.println("\tTemp:" + (temp == null ? null : temp.getData()));
             second.setNextNode(first);
+            System.out.println("\tSecond:" + second.getData());
             first = second;
+            System.out.println("\tFirst:" + first.getData());
             second = temp;
+            System.out.println("\tSecond: " + (second == null ? null : second.getData()));
+            System.out.println("-----");
         }
 
         head.setNextNode(null);
         head = first;
+        System.out.println("Head:" + head.getData());
     }
 
     /**
