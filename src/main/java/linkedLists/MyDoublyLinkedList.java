@@ -152,4 +152,18 @@ public class MyDoublyLinkedList {
 
         return stringBuilder.toString();
     }
+
+    public String printReversed() {
+        StringBuilder stringBuilder = new StringBuilder(100);
+        Node currentNode = tail;
+        while (currentNode != null) {
+            stringBuilder.append(currentNode.getData());
+            if ( (currentNode.getPriorNode() != null)) {
+                stringBuilder.append("-->");
+            }
+            currentNode = currentNode.getPriorNode();
+        }
+
+        return stringBuilder.toString();
+    }
 }

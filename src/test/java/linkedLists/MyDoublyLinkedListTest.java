@@ -47,6 +47,8 @@ class MyDoublyLinkedListTest {
                 .append(5)
                 .append(10);
         assertEquals(3, myDblLinkedList.getLength());
+        assertEquals("10-->5-->15", myDblLinkedList.printReversed());
+        System.out.println(myDblLinkedList.printReversed());
     }
 
     @Test
