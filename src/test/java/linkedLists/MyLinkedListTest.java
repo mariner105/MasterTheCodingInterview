@@ -144,4 +144,38 @@ class MyLinkedListTest {
         System.out.println(myLinkedList.toString());
     }
 
+    @Test
+    public void reverseAList() {
+        myLinkedList
+                .append(15)
+                .append(5)
+                .append(10)
+                .append(22)
+                .append(55)
+                .append(88);
+
+        System.out.println(myLinkedList.toString());
+        MyLinkedList reversedList = myLinkedList.reverseAList(myLinkedList);
+        String revString = reversedList.toString();
+        System.out.println(revString);
+        assertEquals(myLinkedList.getLength(), reversedList.getLength());
+        assertEquals("88-->55-->22-->10-->5-->15", reversedList.toString());
+    }
+
+    @Test
+    public void reverse() {
+        myLinkedList
+                .append(15)
+                .append(5)
+                .append(10)
+                .append(22)
+                .append(55)
+                .append(88);
+        int initialLength = myLinkedList.getLength();
+        System.out.println(myLinkedList.toString());
+        myLinkedList.reverse();
+        System.out.println(myLinkedList.toString());
+
+    }
+
 }

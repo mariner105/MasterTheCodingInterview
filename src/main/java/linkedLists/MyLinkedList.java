@@ -129,6 +129,49 @@ public class MyLinkedList {
         return nodeToRemove;
     }
 
+    /**
+     * Reverse this linked list
+     */
+    public void reverse() {
+        if (head.getNextNode() == null) {
+            return;
+        }
+
+        Node first = head;
+        tail = head;
+        Node second = first.getNextNode();
+        while (second != null) {
+            Node temp = second.getNextNode();
+            second.setNextNode(first);
+            first = second;
+            second = temp;
+        }
+
+        head.setNextNode(null);
+        head = first;
+    }
+
+    /**
+     * Given a linked list as input, we want to return a linked list that has
+     * the items in reversed order.
+     * @param list
+     * @return
+     */
+    public MyLinkedList reverseAList(MyLinkedList list) {
+        //Special cases
+        if (list == null || list.length == 0) {
+            return list;
+        }
+
+        MyLinkedList reversedList = new MyLinkedList();
+        Node currentNode = list.head;
+        while (currentNode != null) {
+            reversedList.prepend(currentNode.getData());
+            currentNode = currentNode.getNextNode();
+        }
+        return reversedList;
+    }
+
     public boolean isEmpty() {
         return this.head == null;
     }
