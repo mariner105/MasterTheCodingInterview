@@ -192,4 +192,16 @@ class MyDoublyLinkedListTest {
         assertEquals(5, myDblLinkedList.getReverse(0).getData());
     }
 
+    @Test
+    public void findHeadAfterInserts() {
+        myDblLinkedList
+                .append(15)
+                .append(5)
+                .append(10)
+                .insert(1, 4);
+        System.out.println(myDblLinkedList.toString());
+        System.out.println(myDblLinkedList.printReversed());
+        assertEquals(15, myDblLinkedList.getReverse(0).getData());
+    }
+
 }

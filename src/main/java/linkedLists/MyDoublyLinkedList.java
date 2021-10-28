@@ -80,15 +80,16 @@ public class MyDoublyLinkedList {
         //Iterate until we find the element to the left
         // of the index (index - 1)
         Node priorNode = get(index - 1);
+        Node follower = priorNode.getNextNode();
 
         //Create new Node and take the next pointer
         // from priorNode
         Node newNode = new Node(value, priorNode.getNextNode(), priorNode);
-        //Repoint priorNode to newNode
+        //Repoint priorNode and follower nodes to newNode
         priorNode.setNextNode(newNode);
+        follower.setPriorNode(newNode);
 
         length++;
-
     }
 
     /**
@@ -136,7 +137,7 @@ public class MyDoublyLinkedList {
             //Hold current tail
             Node temp = tail;
             //Find next to last node
-            tail = getReverse(length - 2);
+            tail = tail.getPriorNode();
             //Set new tail's next node to null
             tail.setNextNode(null);
             //Return the old tail
