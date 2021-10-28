@@ -103,7 +103,7 @@ public class MyLinkedList {
         length--;
 
         //index 0 is head node
-        if (index == 0) {
+        if (index <= 0) {
             Node temp = head;
             head = head.getNextNode();
             return temp;
