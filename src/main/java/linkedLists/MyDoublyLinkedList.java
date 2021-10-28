@@ -50,22 +50,22 @@ public class MyDoublyLinkedList {
      * Prepend a value to the head of the list.
      * @param value the value to prepend to the list.
      */
-    public void prepend(int value) { //TODO
+    public void prepend(int value) {
         length++;
 
         //Prepend to empty list (repoints tail)
         if (head == null) {
-            head = new Node(value, null);
+            head = new Node(value, null, null);
             tail = head;
             return;
         }
 
-        head = new Node(value, head);
+        head = new Node(value, head, null);
     }
 
-    public void insert(int index, int value) {//TODO
+    public void insert(int index, int value) {
         //Prepending so use prepend method
-        if(index == 0) {
+        if (index == 0) {
             prepend(value);
             return;
         }
@@ -83,7 +83,7 @@ public class MyDoublyLinkedList {
 
         //Create new Node and take the next pointer
         // from priorNode
-        Node newNode = new Node(value, priorNode.getNextNode());
+        Node newNode = new Node(value, priorNode.getNextNode(), priorNode);
         //Repoint priorNode to newNode
         priorNode.setNextNode(newNode);
 
@@ -91,10 +91,29 @@ public class MyDoublyLinkedList {
 
     }
 
-    public Node get(int index) {//TODO
+    /**
+     * Get the node at index.
+     * @param index the index of the node
+     * @return found node
+     */
+    public Node get(int index) {
         Node currentNode = head;
         for (int i = 0; i < index && currentNode.getNextNode() != null; i++) {
             currentNode = currentNode.getNextNode();
+        }
+
+        return currentNode;
+    }
+
+    /**
+     * This get starts from the tail and traverses backwards
+     * @param index the index of the node
+     * @return found node
+     */
+    public Node getReverse(int index) {
+        Node currentNode = tail;
+        for (int i = length - 1; i > index && currentNode.getPriorNode() != null; i--) {
+            currentNode = currentNode.getPriorNode();
         }
 
         return currentNode;
@@ -107,6 +126,7 @@ public class MyDoublyLinkedList {
         if (index <= 0) {
             Node temp = head;
             head = head.getNextNode();
+            head.setPriorNode(null);
             return temp;
         }
 
@@ -116,7 +136,7 @@ public class MyDoublyLinkedList {
             //Hold current tail
             Node temp = tail;
             //Find next to last node
-            tail = get(length - 1);
+            tail = getReverse(length - 2);
             //Set new tail's next node to null
             tail.setNextNode(null);
             //Return the old tail
@@ -125,7 +145,9 @@ public class MyDoublyLinkedList {
 
         Node priorNode = get(index - 1);
         Node nodeToRemove = priorNode.getNextNode();
-        priorNode.setNextNode(nodeToRemove.getNextNode());
+        Node nextNode = nodeToRemove.getNextNode();
+        priorNode.setNextNode(nextNode);
+        nextNode.setPriorNode(priorNode);
 
         return nodeToRemove;
     }

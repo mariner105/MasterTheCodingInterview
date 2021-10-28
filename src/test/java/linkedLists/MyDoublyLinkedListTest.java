@@ -52,6 +52,17 @@ class MyDoublyLinkedListTest {
     }
 
     @Test
+    public void testGetReversed() {
+        myDblLinkedList
+                .append(15)
+                .append(5)
+                .append(10);
+        assertEquals(15, myDblLinkedList.getReverse(0).getData());
+        assertEquals(5, myDblLinkedList.getReverse(1).getData());
+        assertEquals(10, myDblLinkedList.getReverse(2).getData());
+    }
+
+    @Test
     public void prependToEmptyList() {
         myDblLinkedList.prepend(56);
         assertFalse(myDblLinkedList.isEmpty());
@@ -115,6 +126,8 @@ class MyDoublyLinkedListTest {
         assertEquals(3, myDblLinkedList.getLength());
         assertEquals(5, myDblLinkedList.get(0).getData());
         System.out.println(myDblLinkedList.toString());
+        System.out.println(myDblLinkedList.printReversed());
+        assertEquals("22-->10-->5", myDblLinkedList.printReversed());
     }
 
     @Test
@@ -130,6 +143,7 @@ class MyDoublyLinkedListTest {
         assertEquals(3, myDblLinkedList.getLength());
         assertEquals(10, myDblLinkedList.get(2).getData());
         System.out.println(myDblLinkedList.toString());
+        System.out.println(myDblLinkedList.printReversed());
     }
 
     @Test
@@ -146,7 +160,36 @@ class MyDoublyLinkedListTest {
         assertEquals(5, myDblLinkedList.getLength());
         assertEquals(55, myDblLinkedList.get(3).getData());
         System.out.println(myDblLinkedList.toString());
+        System.out.println(myDblLinkedList.printReversed());
+        assertEquals("88-->55-->10-->5-->15", myDblLinkedList.printReversed());
     }
 
+    @Test
+    public void findHeadInReverse() {
+        myDblLinkedList
+                .append(15)
+                .append(5)
+                .append(10)
+                .append(22)
+                .append(55)
+                .append(88);
+        System.out.println(myDblLinkedList.toString());
+        assertEquals(15, myDblLinkedList.getReverse(0).getData());
+
+        //Remove value 10 and retest
+        myDblLinkedList.remove(2);
+        System.out.println(myDblLinkedList.toString());
+        assertEquals(15, myDblLinkedList.getReverse(0).getData());
+
+        //Remove value 88 and retest
+        myDblLinkedList.remove(4);
+        System.out.println(myDblLinkedList.toString());
+        assertEquals(15, myDblLinkedList.getReverse(0).getData());
+
+        //Remove value 15 and retest
+        myDblLinkedList.remove(0);
+        System.out.println(myDblLinkedList.toString());
+        assertEquals(5, myDblLinkedList.getReverse(0).getData());
+    }
 
 }

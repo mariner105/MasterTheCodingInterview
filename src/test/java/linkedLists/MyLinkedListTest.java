@@ -121,6 +121,7 @@ class MyLinkedListTest {
                 .append(22);
         System.out.println(myLinkedList.toString());
         Node temp =  myLinkedList.remove(myLinkedList.getLength() - 1);
+        System.out.println(myLinkedList.toString());
         assertEquals(22, temp.getData());
         assertEquals(3, myLinkedList.getLength());
         assertEquals(10, myLinkedList.get(2).getData());
