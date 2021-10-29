@@ -30,7 +30,7 @@ public class MyQueue {
     /**
      * O(1)
      */
-    peek() {
+    public void peek() {
 
     }
 }
