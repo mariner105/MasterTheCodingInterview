@@ -41,6 +41,7 @@ class MyStackTest {
             .push("Discord");
         assertEquals(3, myStack.getLength());
         assertEquals("Discord", myStack.peek().getData());
+        System.out.println(myStack.toString());
     }
 
     @Test

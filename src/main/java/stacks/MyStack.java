@@ -55,4 +55,20 @@ public class MyStack {
     public int getLength() {
         return length;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder(100);
+        GenericNode<String> currentNode = top;
+        while (currentNode != null) {
+            stringBuilder.append(currentNode.getData());
+            if (currentNode.getNext() != null) {
+                stringBuilder.append("\n");
+            }
+
+            currentNode = currentNode.getNext();
+        }
+
+        return stringBuilder.toString();
+    }
 }
