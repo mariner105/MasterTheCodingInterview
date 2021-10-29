@@ -1,17 +1,17 @@
-package linkedLists;
+package common;
 
-public class Node {
+public class TwoWayNode {
     private int data;
-    private Node nextNode;
-    private Node priorNode;
+    private TwoWayNode nextNode;
+    private TwoWayNode priorNode;
 
-    public Node(int data, Node nextNode) {
+    public TwoWayNode(int data, TwoWayNode nextNode) {
         this.data = data;
         this.nextNode = nextNode;
         this.priorNode = null;
     }
 
-    public Node(int data, Node nextNode, Node priorNode) {
+    public TwoWayNode(int data, TwoWayNode nextNode, TwoWayNode priorNode) {
         this.data = data;
         this.nextNode = nextNode;
         this.priorNode = priorNode;
@@ -25,19 +25,19 @@ public class Node {
         this.data = data;
     }
 
-    public Node getNextNode() {
+    public TwoWayNode getNextNode() {
         return nextNode;
     }
 
-    public void setNextNode(Node nextNode) {
+    public void setNextNode(TwoWayNode nextNode) {
         this.nextNode = nextNode;
     }
 
-    public Node getPriorNode() {
+    public TwoWayNode getPriorNode() {
         return priorNode;
     }
 
-    public void setPriorNode(Node priorNode) {
+    public void setPriorNode(TwoWayNode priorNode) {
         this.priorNode = priorNode;
     }
 }

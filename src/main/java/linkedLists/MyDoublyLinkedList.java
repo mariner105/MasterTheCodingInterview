@@ -1,12 +1,14 @@
 package linkedLists;
 
+import common.TwoWayNode;
+
 /**
  * A doubly linked list to hold ints
  */
 public class MyDoublyLinkedList {
 
-    private Node head;
-    private Node tail;
+    private TwoWayNode head;
+    private TwoWayNode tail;
     private int length;
 
     public MyDoublyLinkedList() {
@@ -16,7 +18,7 @@ public class MyDoublyLinkedList {
     }
 
     public MyDoublyLinkedList(int value) {
-        head = new Node(value, null);
+        head = new TwoWayNode(value, null);
         tail = this.head;
         length = 1;
     }
@@ -31,11 +33,11 @@ public class MyDoublyLinkedList {
 
         //Append to an empty list
         if (head == null) {
-            head = new Node(value, null, null);
+            head = new TwoWayNode(value, null, null);
             tail = head;
         } else {
             //Create a new node
-            Node newNode = new Node(value,null, tail);
+            TwoWayNode newNode = new TwoWayNode(value,null, tail);
 
             //Update the current tail's next node to the new node
             tail.setNextNode(newNode);
@@ -55,12 +57,12 @@ public class MyDoublyLinkedList {
 
         //Prepend to empty list (repoints tail)
         if (head == null) {
-            head = new Node(value, null, null);
+            head = new TwoWayNode(value, null, null);
             tail = head;
             return;
         }
 
-        head = new Node(value, head, null);
+        head = new TwoWayNode(value, head, null);
     }
 
     public void insert(int index, int value) {
@@ -79,12 +81,12 @@ public class MyDoublyLinkedList {
 
         //Iterate until we find the element to the left
         // of the index (index - 1)
-        Node priorNode = get(index - 1);
-        Node follower = priorNode.getNextNode();
+        TwoWayNode priorNode = get(index - 1);
+        TwoWayNode follower = priorNode.getNextNode();
 
         //Create new Node and take the next pointer
         // from priorNode
-        Node newNode = new Node(value, priorNode.getNextNode(), priorNode);
+        TwoWayNode newNode = new TwoWayNode(value, priorNode.getNextNode(), priorNode);
         //Repoint priorNode and follower nodes to newNode
         priorNode.setNextNode(newNode);
         follower.setPriorNode(newNode);
@@ -97,8 +99,8 @@ public class MyDoublyLinkedList {
      * @param index the index of the node
      * @return found node
      */
-    public Node get(int index) {
-        Node currentNode = head;
+    public TwoWayNode get(int index) {
+        TwoWayNode currentNode = head;
         for (int i = 0; i < index && currentNode.getNextNode() != null; i++) {
             currentNode = currentNode.getNextNode();
         }
@@ -111,8 +113,8 @@ public class MyDoublyLinkedList {
      * @param index the index of the node
      * @return found node
      */
-    public Node getReverse(int index) {
-        Node currentNode = tail;
+    public TwoWayNode getReverse(int index) {
+        TwoWayNode currentNode = tail;
         for (int i = length - 1; i > index && currentNode.getPriorNode() != null; i--) {
             currentNode = currentNode.getPriorNode();
         }
@@ -120,12 +122,12 @@ public class MyDoublyLinkedList {
         return currentNode;
     }
 
-    public Node remove(int index) {
+    public TwoWayNode remove(int index) {
         length--;
 
         //index 0 is head node
         if (index <= 0) {
-            Node temp = head;
+            TwoWayNode temp = head;
             head = head.getNextNode();
             head.setPriorNode(null);
             return temp;
@@ -135,7 +137,7 @@ public class MyDoublyLinkedList {
         // finding the previous node
         if (index >= length) {
             //Hold current tail
-            Node temp = tail;
+            TwoWayNode temp = tail;
             //Find next to last node
             tail = tail.getPriorNode();
             //Set new tail's next node to null
@@ -144,9 +146,9 @@ public class MyDoublyLinkedList {
             return temp;
         }
 
-        Node priorNode = get(index - 1);
-        Node nodeToRemove = priorNode.getNextNode();
-        Node nextNode = nodeToRemove.getNextNode();
+        TwoWayNode priorNode = get(index - 1);
+        TwoWayNode nodeToRemove = priorNode.getNextNode();
+        TwoWayNode nextNode = nodeToRemove.getNextNode();
         priorNode.setNextNode(nextNode);
         nextNode.setPriorNode(priorNode);
 
@@ -164,7 +166,7 @@ public class MyDoublyLinkedList {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder(100);
-        Node currentNode = head;
+        TwoWayNode currentNode = head;
         while (currentNode != null) {
             stringBuilder.append(currentNode.getData());
             if ( (currentNode.getNextNode() != null)) {
@@ -178,7 +180,7 @@ public class MyDoublyLinkedList {
 
     public String printReversed() {
         StringBuilder stringBuilder = new StringBuilder(100);
-        Node currentNode = tail;
+        TwoWayNode currentNode = tail;
         while (currentNode != null) {
             stringBuilder.append(currentNode.getData());
             if ( (currentNode.getPriorNode() != null)) {

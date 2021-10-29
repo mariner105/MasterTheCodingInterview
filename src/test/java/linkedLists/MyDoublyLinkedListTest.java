@@ -1,5 +1,6 @@
 package linkedLists;
 
+import common.TwoWayNode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -138,7 +139,7 @@ class MyDoublyLinkedListTest {
                 .append(10)
                 .append(22);
         System.out.println(myDblLinkedList.toString());
-        Node temp =  myDblLinkedList.remove(myDblLinkedList.getLength() - 1);
+        TwoWayNode temp =  myDblLinkedList.remove(myDblLinkedList.getLength() - 1);
         assertEquals(22, temp.getData());
         assertEquals(3, myDblLinkedList.getLength());
         assertEquals(10, myDblLinkedList.get(2).getData());

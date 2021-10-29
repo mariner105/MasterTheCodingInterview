@@ -1,5 +1,9 @@
 package linkedLists;
 
+import common.Node;
+import common.Node;
+import common.Node;
+
 /**
  * A linked list to hold ints
  */
@@ -37,7 +41,7 @@ public class MyLinkedList {
             //Create a new node
             Node newNode = new Node(value,null);
             //Update the current tail's next node to the new node
-            tail.setNextNode(newNode);
+            tail.setNext(newNode);
             //Point tail to the new node
             tail = newNode;
         }
@@ -82,9 +86,9 @@ public class MyLinkedList {
 
         //Create new Node and take the next pointer
         // from priorNode
-        Node newNode = new Node(value, priorNode.getNextNode());
+        Node newNode = new Node(value, priorNode.getNext());
         //Repoint priorNode to newNode
-        priorNode.setNextNode(newNode);
+        priorNode.setNext(newNode);
 
         length++;
 
@@ -92,8 +96,8 @@ public class MyLinkedList {
 
     public Node get(int index) {
         Node currentNode = head;
-        for (int i = 0; i < index && currentNode.getNextNode() != null; i++) {
-            currentNode = currentNode.getNextNode();
+        for (int i = 0; i < index && currentNode.getNext() != null; i++) {
+            currentNode = currentNode.getNext();
         }
 
         return currentNode;
@@ -105,7 +109,7 @@ public class MyLinkedList {
         //index 0 is head node
         if (index <= 0) {
             Node temp = head;
-            head = head.getNextNode();
+            head = head.getNext();
             return temp;
         }
 
@@ -117,14 +121,14 @@ public class MyLinkedList {
             //Find next to last node
             tail = get(length - 1);
             //Set new tail's next node to null
-            tail.setNextNode(null);
+            tail.setNext(null);
             //Return the old tail
             return temp;
         }
 
         Node priorNode = get(index - 1);
-        Node nodeToRemove = priorNode.getNextNode();
-        priorNode.setNextNode(nodeToRemove.getNextNode());
+        Node nodeToRemove = priorNode.getNext();
+        priorNode.setNext(nodeToRemove.getNext());
 
         return nodeToRemove;
     }
@@ -133,7 +137,7 @@ public class MyLinkedList {
      * Reverse this linked list
      */
     public void reverse() {
-        if (head.getNextNode() == null) {
+        if (head.getNext() == null) {
             return;
         }
 
@@ -141,13 +145,13 @@ public class MyLinkedList {
         System.out.println("First:" + first.getData());
         tail = head;
         System.out.println("Tail:" + tail.getData());
-        Node second = first.getNextNode();
+        Node second = first.getNext();
         System.out.println("Second:" + second.getData());
         System.out.println("-----");
         while (second != null) {
-            Node temp = second.getNextNode();
+            Node temp = second.getNext();
             System.out.println("\tTemp:" + (temp == null ? null : temp.getData()));
-            second.setNextNode(first);
+            second.setNext(first);
             System.out.println("\tSecond:" + second.getData());
             first = second;
             System.out.println("\tFirst:" + first.getData());
@@ -156,7 +160,7 @@ public class MyLinkedList {
             System.out.println("-----");
         }
 
-        head.setNextNode(null);
+        head.setNext(null);
         head = first;
         System.out.println("Head:" + head.getData());
     }
@@ -177,7 +181,7 @@ public class MyLinkedList {
         Node currentNode = list.head;
         while (currentNode != null) {
             reversedList.prepend(currentNode.getData());
-            currentNode = currentNode.getNextNode();
+            currentNode = currentNode.getNext();
         }
         return reversedList;
     }
@@ -196,10 +200,10 @@ public class MyLinkedList {
         Node currentNode = head;
         while (currentNode != null) {
             stringBuilder.append(currentNode.getData());
-            if ( (currentNode.getNextNode() != null)) {
+            if ( (currentNode.getNext() != null)) {
                 stringBuilder.append("-->");
             }
-            currentNode = currentNode.getNextNode();
+            currentNode = currentNode.getNext();
         }
 
         return stringBuilder.toString();
