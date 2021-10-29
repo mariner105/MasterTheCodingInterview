@@ -17,6 +17,17 @@ class MyStackTest {
         myStack = new MyStack();
     }
 
+    @Test
+    public void isEmpty() {
+        assertTrue(myStack.isEmpty());
+    }
+
+    @Test
+    public void notEmpty() {
+        myStack.push("Google");
+        assertFalse(myStack.isEmpty());
+    }
+
     //Sample stack to test
     //Discord
     //Udemy
@@ -30,5 +41,22 @@ class MyStackTest {
             .push("Discord");
         assertEquals(3, myStack.getLength());
         assertEquals("Discord", myStack.peek().getData());
+    }
+
+    @Test
+    public void testPopEmptyStack() {
+        assertNull(myStack.pop());
+    }
+
+    @Test
+    public void testPop() {
+        myStack
+            .push("Google")
+            .push("Udemy")
+            .push("Discord");
+        assertEquals("Discord", myStack.pop().getData());
+        assertEquals("Udemy", myStack.pop().getData());
+        assertEquals("Google", myStack.pop().getData());
+        assertTrue(myStack.isEmpty());
     }
 }

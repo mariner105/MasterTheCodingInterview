@@ -40,11 +40,12 @@ public class MyStack {
 
         GenericNode<String> temp = top;
         top = top.getNext();
-        if (top.getNext() == null) {
-            bottom = top;
+        if (top == null) {
+            bottom = null;
         }
 
-        return top;
+        length--;
+        return temp;
     }
 
     public boolean isEmpty() {
