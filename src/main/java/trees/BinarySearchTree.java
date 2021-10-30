@@ -50,6 +50,9 @@ public class BinarySearchTree {
     }
 
     public BinaryTreeNode lookup(int value) {
+        if (root == null) {
+            return null;
+        }
         return search(value, root);
     }
 
