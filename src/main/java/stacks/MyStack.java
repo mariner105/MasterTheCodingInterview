@@ -4,8 +4,8 @@ import common.GenericNode;
 
 public class MyStack<T> {
 
-    private GenericNode<String> top;
-    private GenericNode<String> bottom;
+    private GenericNode<T> top;
+    private GenericNode<T> bottom;
     private int length;
 
     public MyStack() {
@@ -14,11 +14,11 @@ public class MyStack<T> {
         this.length = 0;
     }
 
-    public GenericNode<String> peek() {
+    public GenericNode<T> peek() {
         return top;
     }
 
-    public MyStack<T> push(String item) {
+    public MyStack<T> push(T item) {
         //Special case
         if (item == null) {
             return this;
@@ -32,13 +32,13 @@ public class MyStack<T> {
         return this;
     }
 
-    public GenericNode<String> pop() {
+    public GenericNode<T> pop() {
         //Special case
         if (top == null) {
             return null;
         }
 
-        GenericNode<String> temp = top;
+        GenericNode<T> temp = top;
         top = top.getNext();
         if (top == null) {
             bottom = null;
@@ -59,7 +59,7 @@ public class MyStack<T> {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder(100);
-        GenericNode<String> currentNode = top;
+        GenericNode<T> currentNode = top;
         while (currentNode != null) {
             stringBuilder.append(currentNode.getData());
             if (currentNode.getNext() != null) {
