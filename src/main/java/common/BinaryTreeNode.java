@@ -1,35 +1,35 @@
 package common;
 
-public class BinaryTreeNode<T> {
+public class BinaryTreeNode {
 
-    private BinaryTreeNode<T> left;
-    private BinaryTreeNode<T> right;
+    private BinaryTreeNode left;
+    private BinaryTreeNode right;
 
-    private final T value;
+    private final int value;
 
-    public BinaryTreeNode(T value, BinaryTreeNode<T> left, BinaryTreeNode<T> right) {
+    public BinaryTreeNode(int value, BinaryTreeNode left, BinaryTreeNode right) {
         this.left = left;
         this.right = right;
         this.value = value;
     }
 
-    public BinaryTreeNode<T> getLeft() {
+    public BinaryTreeNode getLeft() {
         return left;
     }
 
-    public void setLeft(BinaryTreeNode<T> left) {
+    public void setLeft(BinaryTreeNode left) {
         this.left = left;
     }
 
-    public BinaryTreeNode<T> getRight() {
+    public BinaryTreeNode getRight() {
         return right;
     }
 
-    public void setRight(BinaryTreeNode<T> right) {
+    public void setRight(BinaryTreeNode right) {
         this.right = right;
     }
 
-    public T getValue() {
+    public int getValue() {
         return value;
     }
 }
