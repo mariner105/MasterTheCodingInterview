@@ -29,6 +29,8 @@ class BinarySearchTreeTest {
 
     @Test
     public void lookup() {
+        assertNull(tree.lookup(20));
+
         tree
                 .insert(9)
                 .insert(4)
@@ -37,6 +39,6 @@ class BinarySearchTreeTest {
                 .insert(170)
                 .insert(15)
                 .insert(1);
-        tree.lookup(20);
+        assertEquals(20, tree.lookup(20).getValue());
     }
 }

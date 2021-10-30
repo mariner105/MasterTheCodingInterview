@@ -50,13 +50,27 @@ public class BinarySearchTree {
     }
 
     public BinaryTreeNode lookup(int value) {
+        return search(value, root);
+    }
 
-        return null;//TODO
+    private BinaryTreeNode search(int value, BinaryTreeNode node) {
+        if (node == null) {
+            return null;
+        }
+
+        if (value == node.getValue()) {
+            return node;
+        } else if (value < root.getValue()) {
+            return search(value, node.getLeft());
+        } else {
+            return search(value, node.getRight());
+        }
     }
 
     public BinaryTreeNode remove(int value) {
+        throw new RuntimeException("Not yet coded"); //TODO
 
-        return null;//TODO
+        //return null;//TODO
     }
 
     public String traverse(BinaryTreeNode node) {
