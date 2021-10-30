@@ -24,7 +24,7 @@ class BinarySearchTreeTest {
             .insert(15)
             .insert(1);
 
-        System.out.println(tree.traverse(tree.getRoot()));
+        System.out.println(tree.nodeToJson(tree.getRoot()));
     }
 
     @Test

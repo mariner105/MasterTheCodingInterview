@@ -109,35 +109,6 @@ public class BinarySearchTree {
         return stringBuilder.toString();
     }
 
-    public String traverse(BinaryTreeNode currentNode) {
-        StringBuilder tree = new StringBuilder(200);
-        if (root != null) {
-            tree.append(root.getValue()).append(" ");
-        }
-        buildTree(tree, currentNode);
-
-        return tree.toString();
-    }
-
-    private void buildTree(StringBuilder tree, BinaryTreeNode currentNode) {
-        //Check for base case
-        if (currentNode.getLeft() == null && currentNode.getRight() == null) {
-            return;
-        }
-
-        if (currentNode.getLeft() != null) {
-            BinaryTreeNode left = currentNode.getLeft();
-            tree.append(left.getValue()).append(" ");
-            buildTree(tree, left);
-        }
-
-        if (currentNode.getRight() != null) {
-            BinaryTreeNode right = currentNode.getRight();
-            tree.append(right.getValue()).append(" ");
-            buildTree(tree, right);
-        }
-    }
-
     public BinaryTreeNode getRoot() {
         return root;
     }
