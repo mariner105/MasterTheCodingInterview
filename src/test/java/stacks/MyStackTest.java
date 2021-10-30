@@ -10,11 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class MyStackTest {
 
-    MyStack myStack;
+    MyStack<String> myStack;
 
     @BeforeEach
     public void setUp() {
-        myStack = new MyStack();
+        myStack = new MyStack<>();
     }
 
     @Test

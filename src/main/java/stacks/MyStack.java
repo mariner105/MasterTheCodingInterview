@@ -2,7 +2,7 @@ package stacks;
 
 import common.GenericNode;
 
-public class MyStack {
+public class MyStack<T> {
 
     private GenericNode<String> top;
     private GenericNode<String> bottom;
@@ -18,7 +18,7 @@ public class MyStack {
         return top;
     }
 
-    public MyStack push(String item) {
+    public MyStack<T> push(String item) {
         //Special case
         if (item == null) {
             return this;
