@@ -71,9 +71,89 @@ public class BinarySearchTree {
     }
 
     public BinaryTreeNode remove(int value) {
-        throw new RuntimeException("Not yet coded"); //TODO
+        if (root == null) {
+            return null;
+        }
 
-        //return null;//TODO
+        BinaryTreeNode parentNode = null;
+        BinaryTreeNode currentNode = root;
+        while (currentNode != null) {
+            if (value < currentNode.getValue()){
+                //Go left
+                parentNode = currentNode;
+                currentNode = currentNode.getLeft();
+            } else if (value > currentNode.getValue()) {
+                //Go right
+                parentNode = currentNode;
+                currentNode = currentNode.getRight();
+            } else if (currentNode.getValue() == value){
+                //Found the node, now we have work to do
+
+                //Option 1: no right child
+                if (currentNode.getRight() == null) {
+                    if (parentNode == null) {
+                        root = currentNode.getLeft();
+                    } else {
+
+                        //if parent > current value, make current left child a child of parent
+                        if (currentNode.getValue() < parentNode.getValue()) {
+                            parentNode.setLeft(currentNode.getLeft());
+
+                        //if parent < current value, make left child a right child of parent
+                        } else if (currentNode.getValue() > parentNode.getValue()) {
+                            parentNode.setRight(currentNode.getLeft());
+                        }
+                    }
+                //Option 2: Right child which doesn't have a left child
+                } else if (currentNode.getRight().getLeft() == null) {
+                    if (parentNode == null) {
+                        root = currentNode.getLeft();
+                    } else {
+                        currentNode.getRight().setLeft(currentNode.getLeft());
+
+                        //if parent > current, make right child
+                        // of the left the parent.
+                        if (currentNode.getValue() < parentNode.getValue()) {
+                            parentNode.setLeft(currentNode.getRight());
+
+                        //if parent < current, make right child a
+                        // right child of the parent
+                        } else if (currentNode.getValue() > parentNode.getValue()) {
+                            parentNode.setRight(currentNode.getRight());
+                        }
+                    }
+
+                //Option 3: Right child that has a left child
+                } else  {
+                    //find the Right child's left most child
+                    BinaryTreeNode leftmost = currentNode.getRight().getLeft();
+                    BinaryTreeNode leftmostParent = currentNode.getRight();
+                    while (leftmost.getLeft() != null) {
+                        leftmostParent = leftmost;
+                        leftmost = leftmost.getLeft();
+                    }
+
+                    //Parent's left subtree is now leftmost's
+                    // right subtree
+                    leftmostParent.setLeft(leftmost.getRight());
+                    leftmost.setLeft(currentNode.getLeft());
+                    leftmost.setRight(currentNode.getRight());
+
+                    if (parentNode == null) {
+                        root = leftmost;
+                    } else {
+                        if (currentNode.getValue() < parentNode.getValue()) {
+                            parentNode.setLeft(leftmost);
+                        } else if (currentNode.getValue() > parentNode.getValue()) {
+                            parentNode.setRight(leftmost);
+                        }
+                    }
+                }
+                return currentNode;
+            }
+        }
+
+        return null;
     }
 
     public String nodeToJson(BinaryTreeNode currentNode) {

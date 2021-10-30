@@ -28,6 +28,21 @@ class BinarySearchTreeTest {
     }
 
     @Test
+    public void remove() {
+        tree
+            .insert(9)
+            .insert(4)
+            .insert(6)
+            .insert(20)
+            .insert(170)
+            .insert(15)
+            .insert(1);
+        assertNull(tree.remove(0));
+        assertEquals(20, tree.remove(20).getValue());
+        System.out.println(tree.nodeToJson(tree.getRoot()));
+    }
+
+    @Test
     public void lookup() {
         assertNull(tree.lookup(20));
 
