@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GraphNode {
-    private char id;
-    private List<GraphNode> edges;
+    private final char id;
+    private final List<GraphNode> edges;
 
     public GraphNode(char id) {
         this.id = id;
