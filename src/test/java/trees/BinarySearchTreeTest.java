@@ -32,6 +32,19 @@ class BinarySearchTreeTest {
         assertNull(tree.lookup(20));
 
         tree
+            .insert(9)
+            .insert(4)
+            .insert(6)
+            .insert(20)
+            .insert(170)
+            .insert(15)
+            .insert(1);
+        assertEquals(20, tree.lookup(20).getValue());
+    }
+
+    @Test
+    public void nodeToJson() {
+        tree
                 .insert(9)
                 .insert(4)
                 .insert(6)
@@ -39,6 +52,7 @@ class BinarySearchTreeTest {
                 .insert(170)
                 .insert(15)
                 .insert(1);
-        assertEquals(20, tree.lookup(20).getValue());
+
+        System.out.println(tree.nodeToJson(tree.getRoot()));
     }
 }

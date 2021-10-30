@@ -15,7 +15,7 @@ public class BinarySearchTree {
     }
 
     public BinarySearchTree insert(int value) {
-        //First node
+        //First node added to the tree
         if (root == null) {
             root = newChildNode(value);
             return this;
@@ -25,20 +25,20 @@ public class BinarySearchTree {
         return this;
     }
 
-    private void insertNode(int value, BinaryTreeNode node) {
-        if (value < node.getValue()) {
-            //Look left
-            BinaryTreeNode left = node.getLeft();
+    private void insertNode(int value, BinaryTreeNode currentNode) {
+        if (value < currentNode.getValue()) {
+            //Insert left
+            BinaryTreeNode left = currentNode.getLeft();
             if (left == null) {
-                node.setLeft(newChildNode(value));
+                currentNode.setLeft(newChildNode(value));
                 return;
             }
             insertNode(value, left);
         } else {
-            //Look right
-            BinaryTreeNode right = node.getRight();
+            //Insert right
+            BinaryTreeNode right = currentNode.getRight();
             if (right == null) {
-                node.setRight(newChildNode(value));
+                currentNode.setRight(newChildNode(value));
                 return;
             }
             insertNode(value, right);
@@ -53,17 +53,17 @@ public class BinarySearchTree {
         return search(value, root);
     }
 
-    private BinaryTreeNode search(int value, BinaryTreeNode node) {
-        if (node == null) {
+    private BinaryTreeNode search(int value, BinaryTreeNode currentNode) {
+        if (currentNode == null) {
             return null;
         }
 
-        if (value == node.getValue()) {
-            return node;
+        if (value == currentNode.getValue()) {
+            return currentNode;
         } else if (value < root.getValue()) {
-            return search(value, node.getLeft());
+            return search(value, currentNode.getLeft());
         } else {
-            return search(value, node.getRight());
+            return search(value, currentNode.getRight());
         }
     }
 
@@ -73,30 +73,66 @@ public class BinarySearchTree {
         //return null;//TODO
     }
 
-    public String traverse(BinaryTreeNode node) {
+    public String nodeToJson(BinaryTreeNode currentNode) {
+        if (currentNode == null) {
+            return "{null}";
+        }
+
+        //Start a Json object
+        StringBuilder stringBuilder = new StringBuilder(200);
+        stringBuilder.append("{");
+
+        BinaryTreeNode left = currentNode.getLeft();
+        BinaryTreeNode right  = currentNode.getRight();
+
+        //Record value
+        stringBuilder
+                .append("\"value\":")
+                .append(currentNode.getValue())
+                .append(",");
+
+        //Go left node
+        stringBuilder
+                .append("\"left\":")
+                .append(left == null ? "null" : nodeToJson(left))
+                .append(",");
+
+
+        //Go right node
+        stringBuilder
+                .append("\"right\":")
+                .append(right == null ? "null" : nodeToJson(right));
+
+
+        //End a Json object
+        stringBuilder.append("}");
+        return stringBuilder.toString();
+    }
+
+    public String traverse(BinaryTreeNode currentNode) {
         StringBuilder tree = new StringBuilder(200);
         if (root != null) {
             tree.append(root.getValue()).append(" ");
         }
-        buildTree(tree, node);
+        buildTree(tree, currentNode);
 
         return tree.toString();
     }
 
-    private void buildTree(StringBuilder tree, BinaryTreeNode node) {
+    private void buildTree(StringBuilder tree, BinaryTreeNode currentNode) {
         //Check for base case
-        if (node.getLeft() == null && node.getRight() == null) {
+        if (currentNode.getLeft() == null && currentNode.getRight() == null) {
             return;
         }
 
-        if (node.getLeft() != null) {
-            BinaryTreeNode left = node.getLeft();
+        if (currentNode.getLeft() != null) {
+            BinaryTreeNode left = currentNode.getLeft();
             tree.append(left.getValue()).append(" ");
             buildTree(tree, left);
         }
 
-        if (node.getRight() != null) {
-            BinaryTreeNode right = node.getRight();
+        if (currentNode.getRight() != null) {
+            BinaryTreeNode right = currentNode.getRight();
             tree.append(right.getValue()).append(" ");
             buildTree(tree, right);
         }
