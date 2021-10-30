@@ -22,14 +22,17 @@ public class MyQueue<T> {
      * O(1)
      */
     public void enqueue(String value) {
+        GenericNode<String> newNode =
+            new GenericNode<String>(value, last == null ? null : last.getNext());
         if (length == 0) {
             //Set the first node in the queue
-            last = new GenericNode<String>(value, null);
-            first = last;
+            first = newNode;
+            last = first;
         } else {
             //Add to the end of the queue (last.next)
-            GenericNode<String> newNode = new GenericNode<String>(value, last.getNext());
-            last.setNext(newNode);
+            if (last != null) {
+                last.setNext(newNode);
+            }
             last = newNode;
         }
         length++;
