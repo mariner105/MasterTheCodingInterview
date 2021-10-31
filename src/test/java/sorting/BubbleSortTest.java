@@ -17,8 +17,17 @@ class BubbleSortTest {
     public void sortArray() {
         int[] array = {6,5,3,1,8,7,2,4};
         bubbleSort.sort(array);
-        for (int i = 0; i < array.length; i++) {
-            assertEquals(i + 1, array[i]);
+        for (int i = 0; i < array.length - 1; i++) {
+            assertTrue(array[i] <= array[i+1]);
+        }
+    }
+
+   @Test
+    public void secondArray() {
+        int[] array = {99,44,6,2,1,5,63,87,283,4,0};
+        bubbleSort.sort(array);
+        for (int i = 0; i < array.length - 1; i++) {
+            assertTrue(array[i] <= array[i+1]);
         }
     }
 
