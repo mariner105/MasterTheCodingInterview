@@ -11,7 +11,9 @@ public class InsertionSort {
             } else {
                 //Find where number should go
                 for (int j = 1; j < i; j++) {
+                    //Look for an insertion point for array[i]
                     if (array[i] > array[j-1] && array[i] < array[j]) {
+                        // j has become our insertion index
                         insertElement(array,j, i);
                     }
                 }
