@@ -16,12 +16,12 @@ class FactorialTest {
     @Test
     public void recursive(){
         assertEquals(24, factorial.findFactorialRecursive(4));
-        assertEquals(-4, factorial.findFactorialRecursive(-4));
+        assertEquals(120, factorial.findFactorialRecursive(5));
     }
 
     @Test
     public void iterative(){
         assertEquals(24, factorial.findFactorialIterative(4));
-        assertEquals(-4, factorial.findFactorialRecursive(-4));
+        assertEquals(120, factorial.findFactorialIterative(5));
     }
 }
