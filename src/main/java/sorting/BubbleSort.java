@@ -2,7 +2,7 @@ package sorting;
 
 public class BubbleSort {
 
-    public int[] sort(int[] array) {
+    public void sort(int[] array) {
         int length = array.length;
         for (int iteration = 0; iteration <= length; iteration++) {
             boolean itemsSwapped = false;
@@ -20,6 +20,5 @@ public class BubbleSort {
             }
         }
 
-        return array;
     }
 }
