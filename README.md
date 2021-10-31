@@ -8,4 +8,7 @@ https://visualgo.net/en/bst?slide=1
 
 https://en.wikipedia.org/wiki/List_of_data_structures
 
+Sorting algorithms animations:
+https://www.toptal.com/developers/sorting-algorithms
+
 
