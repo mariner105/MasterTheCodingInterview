@@ -6,7 +6,7 @@ package recursion;
  */
 public class Factorial {
 
-    public int findFactorialRecursive(int number) {
+    public int findFactorialRecursive(int number) { // O(n)
         //Base case
         if (number <= 2) {
             return number;
@@ -15,7 +15,7 @@ public class Factorial {
         return number * findFactorialRecursive(number - 1);
     }
 
-    public int findFactorialIterative(int number) {
+    public int findFactorialIterative(int number) { // O(n)
         if (number <= 2) {
             return number;
         }
