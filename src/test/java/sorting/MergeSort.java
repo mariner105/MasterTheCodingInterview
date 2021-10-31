@@ -6,6 +6,7 @@ public class MergeSort {
 
     public int[] mergeSort(int[] array) {
         int length = array.length;
+        //Base case
         if (length == 1) {
             return array;
         }
@@ -32,7 +33,7 @@ public class MergeSort {
             }
         }
 
-        //Finish processing whichever array didn't get full copied into the new array
+        //Finish processing whichever array didn't get fully copied into the new array
         if (leftIndex < left.length) {
             for (int i = leftIndex; i < left.length; i++) {
                 mergedArray[mergedIndex++] = left[i];
