@@ -100,4 +100,17 @@ class BinarySearchTreeTest {
                 .insert(1);
         List<Integer> list = tree.breadthFirstSearchR();
     }
+
+    @Test
+    void DFSInorder() {
+        tree
+                .insert(9)
+                .insert(4)
+                .insert(6)
+                .insert(20)
+                .insert(170)
+                .insert(15)
+                .insert(1);
+        List<Integer> list = tree.DFSInOrder();
+    }
 }

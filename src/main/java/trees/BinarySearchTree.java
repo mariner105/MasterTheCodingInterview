@@ -249,6 +249,47 @@ public class BinarySearchTree {
         return breadthFirstSearchRecursion(queue, list);
     }
 
+    public List<Integer> DFSInOrder() {
+        List<Integer> list = new ArrayList<>(50); //This will be our return value
+        return traverseInOrder(root, list);
+    }
+
+    private List<Integer> traverseInOrder(BinaryTreeNode node, List<Integer> list) {
+        System.out.println(node.getValue());
+        if (node.getLeft() != null) {
+            traverseInOrder(node.getLeft(), list);
+        }
+        //We push the node into the list after processing the left nodes so that
+        // our list will be in order.
+        list.add(node.getValue());
+        if (node.getRight() != null) {
+            traverseInOrder(node.getRight(), list);
+        }
+        return list;
+    }
+
+    public List<Integer> DFSPostOrder() {
+        List<Integer> list = new ArrayList<>(50); //This will be our return value
+        return traverseInOrder(root, list);
+    }
+
+    private List<Integer> traversePostOrder(BinaryTreeNode node, List<Integer> list) {
+        return null;
+
+
+    }
+
+    public List<Integer> DFSPreOrder() {
+        List<Integer> list = new ArrayList<>(50); //This will be our return value
+        return traverseInOrder(root, list);
+    }
+
+    private List<Integer> traversePreOrder(BinaryTreeNode node, List<Integer> list) {
+        return null;
+
+
+    }
+
     public BinaryTreeNode getRoot() {
         return root;
     }
