@@ -89,7 +89,7 @@ class BinarySearchTreeTest {
     }
 
     @Test
-    public void breadFirstSearchRecursive() {
+    public void breadthFirstSearchRecursive() {
         tree
                 .insert(9)
                 .insert(4)
