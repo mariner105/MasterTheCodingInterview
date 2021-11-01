@@ -2,16 +2,16 @@ package trees;
 
 import common.BinaryTreeNode;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class BinarySearchTree {
 
     private BinaryTreeNode root;
 
     public BinarySearchTree() {
         this.root = null;
-    }
-
-    public BinarySearchTree(BinaryTreeNode root) {
-        this.root = root;
     }
 
     public BinarySearchTree insert(int value) {
@@ -190,6 +190,63 @@ public class BinarySearchTree {
         //End a Json object
         stringBuilder.append("}");
         return stringBuilder.toString();
+    }
+
+    public List<Integer> breadthFirstSearch() {
+        BinaryTreeNode currentNode = root;
+        List<Integer> list = new ArrayList<>(50); //This will be our return value
+        LinkedList<BinaryTreeNode> queue = new LinkedList<>(); //Used to hold the nodes that we want to search
+        queue.add(currentNode); //Note: use add and pop for queue functionality
+
+        while (queue.size() > 0) {
+            currentNode = queue.pop();
+            System.out.println(currentNode.getValue());
+            //Add current node to the list
+            list.add(currentNode.getValue());
+
+            //Add children of currentNode to the queue
+            if (currentNode.getLeft() != null) {
+                queue.add(currentNode.getLeft());
+            }
+            if (currentNode.getRight() != null) {
+                queue.add(currentNode.getRight());
+            }
+        }
+
+        return list;
+    }
+
+    /**
+     * A recursive version of BFS.
+     * Note: that BFS is normally not implemented using recursion.
+     * @return list of values
+     */
+    public List<Integer> breadthFirstSearchR() {
+        List<Integer> list = new ArrayList<>(50); //This will be our return value
+        LinkedList<BinaryTreeNode> queue = new LinkedList<>(); //Used to hold the nodes that we want to search
+        queue.add(root); //Note: use add and pop for queue functionality
+        return breadthFirstSearchRecursion(queue, list);
+    }
+
+    private List<Integer> breadthFirstSearchRecursion(LinkedList<BinaryTreeNode> queue, List<Integer> list) {
+        //Base case
+        if (queue.size() == 0) {
+            return list;
+        }
+
+        BinaryTreeNode currentNode = queue.pop();
+        list.add(currentNode.getValue());
+        System.out.println(currentNode.getValue());
+
+        //Add children of currentNode to the queue
+        if (currentNode.getLeft() != null) {
+            queue.add(currentNode.getLeft());
+        }
+        if (currentNode.getRight() != null) {
+            queue.add(currentNode.getRight());
+        }
+
+        return breadthFirstSearchRecursion(queue, list);
     }
 
     public BinaryTreeNode getRoot() {
