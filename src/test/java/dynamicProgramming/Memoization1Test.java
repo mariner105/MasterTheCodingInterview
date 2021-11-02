@@ -16,7 +16,7 @@ class Memoization1Test {
 
     @Test
     public void addTo80() {
-        for (int i = 0; i < 10_000_000; i ++) {
+        for (int i = 0; i < 20_000_000; i ++) {
             memoization1.addTo80(1);
             memoization1.addTo80(2);
             memoization1.addTo80(3);
@@ -28,7 +28,7 @@ class Memoization1Test {
 
     @Test
     public void addTo80Memoized() {
-        for (int i = 0; i < 10_000_000; i ++) {
+        for (int i = 0; i < 20_000_000; i ++) {
             memoization1.memoizedAddTo80(1);
             memoization1.memoizedAddTo80(2);
             memoization1.memoizedAddTo80(3);
