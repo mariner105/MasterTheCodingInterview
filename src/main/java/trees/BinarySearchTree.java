@@ -270,7 +270,7 @@ public class BinarySearchTree {
 
     public List<Integer> DFSPostOrder() {
         List<Integer> list = new ArrayList<>(50); //This will be our return value
-        return traverseInOrder(root, list);
+        return traversePostOrder(root, list);
     }
 
     private List<Integer> traversePostOrder(BinaryTreeNode node, List<Integer> list) {
@@ -281,13 +281,21 @@ public class BinarySearchTree {
 
     public List<Integer> DFSPreOrder() {
         List<Integer> list = new ArrayList<>(50); //This will be our return value
-        return traverseInOrder(root, list);
+        return traversePreOrder(root, list);
     }
 
     private List<Integer> traversePreOrder(BinaryTreeNode node, List<Integer> list) {
-        return null;
-
-
+        System.out.println(node.getValue());
+        //We push the node into the list before processing the left and right nodes
+        // so that our list will be in pre-order.
+        list.add(node.getValue());
+        if (node.getLeft() != null) {
+            traversePreOrder(node.getLeft(), list);
+        }
+        if (node.getRight() != null) {
+            traversePreOrder(node.getRight(), list);
+        }
+        return list;
     }
 
     public BinaryTreeNode getRoot() {

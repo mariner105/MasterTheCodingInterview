@@ -113,4 +113,23 @@ class BinarySearchTreeTest {
                 .insert(1);
         List<Integer> list = tree.DFSInOrder();
     }
+
+    @Test
+    void DFSPreorder() {
+        tree
+                .insert(9)
+                .insert(4)
+                .insert(6)
+                .insert(20)
+                .insert(170)
+                .insert(15)
+                .insert(1);
+        List<Integer> list = tree.DFSPreOrder();
+        assertEquals(7, list.size());
+    }
+
+
+
+
+
 }
