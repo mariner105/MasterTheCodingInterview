@@ -1,7 +1,9 @@
 package recursion;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Given a number N return the index value of the Fibonacci sequence,
@@ -12,6 +14,12 @@ import java.util.List;
  * the 2 previous values, that means that for N=5 -> 2+3.
  */
 public class Fibonacci {
+
+    Map<Integer, Integer> cache;
+
+    public Fibonacci() {
+        this.cache = new Hashtable<>();
+    }
 
     public int fibonacciIterative(int n) { // O(n) This is much better than the recursive version
         int[] arr = new int[500];
@@ -25,13 +33,34 @@ public class Fibonacci {
         return arr[n];
     }
 
-    public int fibonacciRecursive(int n) { //O(2^n) Very bad
+    /**
+     * Non-optimized solution
+     * @param n the value whose fibonacci sequence to calculate
+     * @return the value whose fibonacci sequence to calculate
+     */
+    public int fibonacciRecursiveOld(int n) { //O(2^n) Very bad
         //Base case
         if (n < 2) {
             return n;
         }
 
         return fibonacciRecursive(n-1) + fibonacciRecursive(n - 2);
+    }
+
+    /**
+     * This method has been updated to use memoization (caching) in order
+     * to be more efficient.
+     * @param n the value whose fibonacci sequence to calculate
+     * @return the fibonacci sequence
+     */
+    public int fibonacciRecursive(int n) { //O(2^n) Very bad
+        if (!cache.containsKey(n)) {
+            if (n < 2) {
+                return n;
+            }
+            cache.put(n, fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2));
+        }
+        return cache.get(n);
     }
 
 

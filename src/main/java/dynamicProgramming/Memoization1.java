@@ -29,12 +29,10 @@ public class Memoization1 {
      * @return the result
      */
     public int memoizedAddTo80(int n) {
-        if (cache.containsKey(n)) {
-            return cache.get(n);
-        } else {
+        if (!cache.containsKey(n)) {
             cache.put(n, n + 80);
-            return cache.get(n);
         }
+        return cache.get(n);
     }
 
 

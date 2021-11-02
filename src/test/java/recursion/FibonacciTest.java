@@ -3,7 +3,7 @@ package recursion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FibonacciTest {
 
@@ -30,6 +30,24 @@ class FibonacciTest {
     }
 
     @Test
+    public void recursiveOld() {
+        System.out.println(fibonacci.fibonacciRecursiveOld(8));
+        System.out.println(fibonacci.fibonacciRecursiveOld(5));
+        System.out.println(fibonacci.fibonacciRecursiveOld(4));
+        System.out.println(fibonacci.fibonacciRecursiveOld(3));
+        System.out.println(fibonacci.fibonacciRecursiveOld(2));
+        System.out.println(fibonacci.fibonacciRecursiveOld(1));
+
+        assertEquals(2, fibonacci.fibonacciRecursiveOld(3));
+        assertEquals(21, fibonacci.fibonacciRecursiveOld(8));
+
+        System.out.println(fibonacci.fibonacciRecursiveOld(43));
+        for (int i = 0; i < 10_000_000; i++) {
+            fibonacci.fibonacciRecursiveOld(43);
+        }
+    }
+
+    @Test
     public void recursive() {
         System.out.println(fibonacci.fibonacciRecursive(8));
         System.out.println(fibonacci.fibonacciRecursive(5));
@@ -41,7 +59,10 @@ class FibonacciTest {
         assertEquals(2, fibonacci.fibonacciRecursive(3));
         assertEquals(21, fibonacci.fibonacciRecursive(8));
 
-        System.out.println(fibonacci.fibonacciIterative(43));
+        System.out.println(fibonacci.fibonacciRecursive(43));
+        for (int i = 0; i < 10_000_000; i++) {
+            fibonacci.fibonacciRecursive(43);
+        }
     }
 
 
