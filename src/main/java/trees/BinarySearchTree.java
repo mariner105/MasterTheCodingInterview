@@ -255,7 +255,6 @@ public class BinarySearchTree {
     }
 
     private List<Integer> traverseInOrder(BinaryTreeNode node, List<Integer> list) {
-        System.out.println(node.getValue());
         if (node.getLeft() != null) {
             traverseInOrder(node.getLeft(), list);
         }
@@ -274,9 +273,16 @@ public class BinarySearchTree {
     }
 
     private List<Integer> traversePostOrder(BinaryTreeNode node, List<Integer> list) {
-        return null;
-
-
+        if (node.getLeft() != null) {
+            traversePostOrder(node.getLeft(), list);
+        }
+        if (node.getRight() != null) {
+            traversePostOrder(node.getRight(), list);
+        }
+        //We push the node into the list after processing the left and right nodes
+        // so that our list will be in post-order.
+        list.add(node.getValue());
+        return list;
     }
 
     public List<Integer> DFSPreOrder() {
@@ -285,7 +291,6 @@ public class BinarySearchTree {
     }
 
     private List<Integer> traversePreOrder(BinaryTreeNode node, List<Integer> list) {
-        System.out.println(node.getValue());
         //We push the node into the list before processing the left and right nodes
         // so that our list will be in pre-order.
         list.add(node.getValue());
