@@ -18,7 +18,7 @@ public class Fibonacci {
     Map<Integer, Integer> cache;
 
     public Fibonacci() {
-        this.cache = new Hashtable<>();
+        this.cache = new Hashtable<>(400);
     }
 
     public int fibonacciIterative(int n) { // O(n) This is much better than the recursive version
