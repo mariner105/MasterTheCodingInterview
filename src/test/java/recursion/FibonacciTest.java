@@ -42,9 +42,6 @@ class FibonacciTest {
         assertEquals(21, fibonacci.fibonacciRecursiveOld(8));
 
         System.out.println(fibonacci.fibonacciRecursiveOld(43));
-        for (int i = 0; i < 10_000_000; i++) {
-            fibonacci.fibonacciRecursiveOld(43);
-        }
     }
 
     @Test
@@ -60,9 +57,6 @@ class FibonacciTest {
         assertEquals(21, fibonacci.fibonacciRecursive(8));
 
         System.out.println(fibonacci.fibonacciRecursive(43));
-        for (int i = 0; i < 10_000_000; i++) {
-            fibonacci.fibonacciRecursive(43);
-        }
     }
 
 

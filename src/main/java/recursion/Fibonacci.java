@@ -44,7 +44,7 @@ public class Fibonacci {
             return n;
         }
 
-        return fibonacciRecursive(n-1) + fibonacciRecursive(n - 2);
+        return fibonacciRecursiveOld(n-1) + fibonacciRecursiveOld(n - 2);
     }
 
     /**
