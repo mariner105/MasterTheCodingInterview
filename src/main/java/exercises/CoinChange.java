@@ -30,7 +30,7 @@ public class CoinChange {
         int[] dp = new int[amount + 1];
         Arrays.fill(dp, amount + 1);
         dp[0] = 0; // number of coins to add up to zero
-        //"i" represents how many cents were trying to make up
+        //"i" represents how many cents we're trying to make up
         //"i" is the sub-problem that we are solving.
         for (int i = 0; i <= amount; i++) {
             //Go through the coins

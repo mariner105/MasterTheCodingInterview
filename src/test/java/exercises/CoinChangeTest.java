@@ -20,4 +20,11 @@ class CoinChangeTest {
         int amount = 11;
         assertEquals(3, coinChange.coinChange(coins, amount));
     }
+
+    @Test
+    public void negativeCase() {
+        int[] coins = {2};
+        int amount = 3;
+        assertEquals(-1, coinChange.coinChange(coins, amount));
+    }
 }
