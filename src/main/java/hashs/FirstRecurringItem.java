@@ -28,7 +28,8 @@ public class FirstRecurringItem {
             return array[0];
         }
 
-        Set<Integer> seenItems = new HashSet<>();
+        //Set initial capacity high enough to avoid collisions as much possible
+        Set<Integer> seenItems = new HashSet<>(array.length * 4);
         for (int item : array) {
             if (seenItems.contains(item)) {
                 return item;
