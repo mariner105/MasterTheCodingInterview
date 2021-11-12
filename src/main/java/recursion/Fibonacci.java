@@ -22,7 +22,7 @@ public class Fibonacci {
     }
 
     public int fibonacciIterative(int n) { // O(n) This is much better than the recursive version
-        int[] arr = new int[500];
+        int[] arr = new int[n+1];
         arr[0] = 0;
         arr[1] = 1;
         //Store each Fibonacci in the array at its index
