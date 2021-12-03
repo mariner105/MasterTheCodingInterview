@@ -37,7 +37,7 @@ public class TripleSum {
                int sum = nums[i] + nums[leftIndex] + nums[rightIndex];
                if (sum == target) {
                    result.add(new int[] {nums[i], nums[leftIndex], nums[rightIndex]});
-                   break;
+                   leftIndex++;
                } else if (sum < target) {
                    leftIndex++;
                } else {
@@ -45,8 +45,6 @@ public class TripleSum {
                }
            }
        }
-
-
 
        return result;
    }
