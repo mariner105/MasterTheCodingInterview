@@ -25,6 +25,7 @@ public class MaxDepth {
         int depth = 0, current_depth = 0;
         while (!stack.isEmpty()) {
             root = stack.pollLast();
+            current_depth = depths.pollLast();
             if (root != null) {
                 depth = Math.max(depth, current_depth);
                 stack.add(root.left);
